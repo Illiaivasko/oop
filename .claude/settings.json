@@ -1,0 +1,146 @@
+{
+  "env": {
+    "AGENT_WORKSPACE": "$HOME/projects/oop/.work",
+    "AGENT_STATE_FILE": "session_state.md",
+    "AGENT_CODE_DIRS": "$HOME/projects/oop",
+    "AGENT_SKILLS_DIR": "$HOME/projects/oop/.claude/skills",
+    "AGENT_REPO_DIR": "$HOME/projects/oop",
+    "AGENT_PRECOMMIT_CMD": "echo 'No linter configured yet'",
+    "AGENT_COMMIT_RULES": "Format: '<type>(<scope>): <summary>'. Clean diffs, no temp logs."
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/session-start.sh\""
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/pre-compact.sh\""
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/skill-router.py\""
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/precommit-gate.sh\""
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/precommit-gate.py\""
+          }
+        ]
+      },
+      {
+        "matcher": "Bash|Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"$CLAUDE_PROJECT_DIR/.claude/hooks/protect-tests.py\"; [ ! -f \"$f\" ] || python3 \"$f\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/record-check.py\""
+          },
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/graph-check.py\""
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/live-read-check.py\""
+          },
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/skill-load-check.py\""
+          },
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/teammate-draft-check.py\""
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/claim-check.py\""
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/claim-check.py\""
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/status.sh\""
+  },
+  "permissions": {
+    "deny": [
+      "Bash(script *)",
+      "Bash(expect *)",
+      "Bash(unbuffer *)",
+      "Bash(*socat*pty*)",
+      "Bash(*KIT_OVERRIDE*)",
+      "Bash(*evidence.py confirm*)",
+      "Bash(*evidence.py accept-acs*)",
+      "Bash(*agentkit verify confirm*)",
+      "Bash(*agentkit verify accept-acs*)",
+      "Bash(*agentkit ledger --ack*)",
+      "Bash(*receipt.key*)",
+      "Read(~/.agentkit/receipt.key)"
+    ],
+    "ask": [
+      "Edit(/.claude/hooks/**)",
+      "Edit(/.claude/settings*.json)",
+      "Edit(githooks/**)",
+      "Edit(**/improve/setup-done.md)"
+    ]
+  }
+}

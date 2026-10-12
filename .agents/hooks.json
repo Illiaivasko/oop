@@ -1,0 +1,27 @@
+{
+  "universal-agent-harness": {
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "python3 hooks/antigravity/pre_invocation.py 2>/dev/null || python3 .agents/hooks/antigravity/pre_invocation.py"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 hooks/antigravity/pre_tool_use.py 2>/dev/null || python3 .agents/hooks/antigravity/pre_tool_use.py"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "type": "command",
+        "command": "python3 hooks/antigravity/stop_hook.py 2>/dev/null || python3 .agents/hooks/antigravity/stop_hook.py"
+      }
+    ]
+  }
+}

@@ -1,0 +1,204 @@
+[
+ {
+  "id": "close-out",
+  "skills": [
+   "close-out"
+  ],
+  "triggers": [
+   "закри(й|ймо|ваємо|ваєм|єм|ємо|ти|вати)\\b (\\w+ ){0,2}(тікет|таск|задач|ticket|issue|task)",
+   "\\b[a-z][a-z0-9]+-\\d+\\b .{0,30}(закри|close)",
+   "clos(e|ing) (the |this |these )?(ticket|issue|task)s?",
+   "(поміня|змін|онов|обнов|перевед|поруха)\\w* (\\w+ ){0,2}статус|перепровір\\w* (кожен |всі )?тікет|комент\\w* (для|до|на) ([a-z]+-)?\\d{3,}|відпис\\w* (на|в) (\\w+ )?тікет|коментар (до|в) тікет|tracker comment|comment (to|on) (the )?(ticket|issue)"
+  ]
+ },
+ {
+  "id": "teammate-message",
+  "skills": [
+   "teammate-message",
+   "humanizer"
+  ],
+  "triggers": [
+   "пінг\\w*|\\bping\\b|відпиш\\w*|відпис(ати|уй)\\b(?! (на|в) )|напиш\\w* (\\w+ ){0,2}(в|у) (чат|тред|канал|груп)|меседж\\w* (в|до|для|у) |напиш\\w* .{0,20}(груп|слак|йому|їй|їм)|reply to"
+  ]
+ },
+ {
+  "id": "humanize",
+  "skills": [
+   "humanizer"
+  ],
+  "triggers": [
+   "humaniz|хуманайз|по-людськи|звучить як (ші|ai|бот)|(онови|перепиши|відредагуй) (текст|повідомлен|пост|лист)|\\bemail\\b|\\bлист\\b|release notes?|\\bpost\\b|допис"
+  ]
+ },
+ {
+  "id": "updating-skills",
+  "skills": [
+   "updating-skills"
+  ],
+  "triggers": [
+   "(поправ|онов|зміни|виправ|update|fix)\\w* (\\w+ )?скіл|скіл\\w* (поправ|онов)|update (the )?skill"
+  ]
+ },
+ {
+  "id": "explain",
+  "skills": [
+   "explaining-decisions",
+   "status-update"
+  ],
+  "triggers": [
+   "(поясн|посн)\\w* (рішен|чому|фікс)|як (ти )?(по)?фікс\\w*|explain (the )?(fix|decision)|чому ти (так|це|вирішив|вибрав)|що ти (вирішив|вибрав)|в курсі|why did you",
+   "\\b(що|як) (ти )?(по)?фікс\\w*|\\bщо (ти )?пофікс|\\bщо за .{0,25}(фікс|детерм|нотац|коміт)|розкажи .{0,40}(пофікс|зробив)"
+  ]
+ },
+ {
+  "id": "improve-setup",
+  "skills": [
+   "improve-setup"
+  ],
+  "triggers": [
+   "вдоскональ|удосконал|покращ\\w* (сетап|себе|агент|налаштуван)|порадь (\\w+ )?(скіл|тул|інструмент|підход)|що ще (можна )?покращ|recommend (automations|skills|tools)|improve (yourself|the setup|your setup)|засетап\\w* (себе|агент\\w*)|налашту\\w* (себе|агент\\w*) під|set (yourself|the agent) up"
+  ]
+ },
+ {
+  "id": "new-skill",
+  "skills": [
+   "new-skill"
+  ],
+  "triggers": [
+   "\\bнов\\w* скіл|створ\\w* скіл|зроб\\w* скіл|new[_ -]?skill|create a skill"
+  ]
+ },
+ {
+  "id": "graph",
+  "skills": [
+   "update-graph"
+  ],
+  "triggers": [
+   "(онов|почист|перевір|лінк|прив.яж)\\w* (\\w+ )?граф|граф\\w* (онов|сирот|лінк)|зв.язк\\w* (нотат|тікет)|orphan|\\bgraph\\b"
+  ]
+ },
+ {
+  "id": "ticket-pipeline",
+  "skills": [
+   "ticket-pipeline"
+  ],
+  "triggers": [
+   "worktree|work ?tree|(ворк|вокр) ?тр|паралельн\\w* (таск|тікет|фікс)|кілька (таск|тікет)|батч|batch of (tickets|fixes)|закри\\w* (всі|все)"
+  ]
+ },
+ {
+  "id": "delegate",
+  "skills": [
+   "delegate-to-subagents"
+  ],
+  "triggers": [
+   "суб ?агент|subagent|делегу|parallel agents"
+  ]
+ },
+ {
+  "id": "investigate",
+  "skills": [
+   "investigate-task"
+  ],
+  "triggers": [
+   "досліди|розберись|відтворю|чому так|how bad|наскільки|audit|аудит|is it real",
+   "в чому (\\w+ )?(проблем|причин)|відтвор(и|ити|ю)|дізнат\\w* чому|розібрат\\w* (\\w+ )?причин|чи (реально|справді) (це )?проблем|знайш\\w* причин"
+  ]
+ },
+ {
+  "id": "risk",
+  "skills": [
+   "risk-check"
+  ],
+  "triggers": [
+   "(глянь|прорахуй|оціни|перевір)\\w* (\\w+ )?ризик|what (could|can) (this|it) break|blast radius|risks? of (this|the) change"
+  ]
+ },
+ {
+  "id": "feature",
+  "skills": [
+   "build-a-feature",
+   "risk-check",
+   "writing-code"
+  ],
+  "triggers": [
+   "\\bфі+ч|зроби щоб|\\bfeature\\b|implement|new step|додай (\\w+ ){0,3}(в|у|до) (код|флоу|віджет|апі|api)"
+  ]
+ },
+ {
+  "id": "fix",
+  "skills": [
+   "fix-a-bug",
+   "risk-check",
+   "writing-code"
+  ],
+  "triggers": [
+   "\\bбаг(и|у|ом|ів)?\\b|не працює|broken|поправ(?!\\w* (\\w+ )?скіл)|виправ(?!\\w* (\\w+ )?скіл)|рефактор|refactor",
+   "\\bфікс(им\\w*|ити|ни|ніть)\\b|(давай|зроби\\w*|робити|робимо) (\\w+ ){0,2}фікс\\b|\\b\\d{3,5} фікс\\b|\\bзроби(ти)? ([a-z]+-)?\\d{3,5}\\b",
+   "(?<!my )(?<!the )(?<!\\d )\\bfix\\b(?!:| \\d\\b)"
+  ]
+ },
+ {
+  "id": "verify",
+  "skills": [
+   "verification-before-completion"
+  ],
+  "triggers": [
+   "\\b(пере|по|про)тест(уй|и|ім|імо)\\b|перевір\\w* (\\w+ )?(локально|на (стейдж\\w*|staging|тест\\w*))|\\bverify\\b|(покажи|зроби) демо|запусти (\\w+ ){0,2}регрес"
+  ]
+ },
+ {
+  "id": "deep-research",
+  "skills": [
+   "deep-research"
+  ],
+  "triggers": [
+   "\\bdeep[- ]?research|глибок\\w* (дослідж|ресерч)|\\bресерч\\w*|(зроби|проведи|зробити|провести|потрібн\\w*) (\\w+ ){0,2}дослідженн|research (the |this |a )?(market|topic|landscape|options|alternatives|state of|question)|\\bresearch (what|which|how|whether)\\b|find (me )?(sources|studies|evidence) (on|for|about)|знайди (\\w+ )?(джерела|дослідженн|статистик)|що (взагалі )?відомо про|з джерелами|with (sources|citations)\\b"
+  ]
+ },
+ {
+  "id": "verify-claims",
+  "skills": [
+   "verify-claims"
+  ],
+  "triggers": [
+   "fact[- ]?check|фактчек|факт[- ]чек|перевір\\w* (\\w+ ){0,2}(факт|твердженн|цифр|статистик|джерел|цитат)|чи (це |це справді |справді )?правда\\b|is (this|that|it) (claim |stat )?(actually |really )?true|verify (this|that|the|these|those) (claim|stat|statistic|number|figure|fact|quote)s?|where (is|does) (this|that) (number|stat|statistic|claim|figure) (come )?from|звідки (ця|ці|це|така) (цифр|дан|статистик|інформац)"
+  ]
+ },
+ {
+  "id": "challenge",
+  "skills": [
+   "challenge"
+  ],
+  "triggers": [
+   "devil'?s advocate|адвокат\\w* диявола|stress[- ]?test|poke holes|pre-?mortem|премортем|\\bred[- ]?team (this|my|the|our|it)\\b|challenge (this|my|the|our) (plan|idea|decision|proposal|assumption|approach|strategy|argument)s?|test my assumptions|що може піти не так|what could go wrong|знайди (\\w+ )?(слабк|дірк|діри)|розкритикуй|покритикуй|критично (оціни|глянь|подивись)|перевір мої припущення"
+  ]
+ },
+ {
+  "id": "summarize",
+  "skills": [
+   "summarize"
+  ],
+  "triggers": [
+   "\\bsummari[sz]e\\b|\\b(give|write|make) (me )?a (short |quick )?summary of\\b|\\btl;? ?dr\\b|самарі|саммарі|сумарі|підсумуй (\\w+ ){0,1}(цей|цю|ці|це|статт|документ|тред|транскрипт|зустріч|нотатк|лист|переписк)|коротко (\\w+ ){0,2}(суть|про що)|вижимк\\w* (з |із |цього |цієї |цих |статт|документ|тред|транскрипт|зустріч|листуванн)|key takeaways|the gist\\b|action items|екшн[- ]?айтем|що (ми )?(вирішили|домовились) на (зустрічі|мітингу|коллі|созвоні|дзвінку)|who owns what"
+  ]
+ },
+ {
+  "id": "decide",
+  "skills": [
+   "decide"
+  ],
+  "triggers": [
+   "допоможи (мені )?(вибрати|обрати|вирішити|визначитись)|(^|[.?!,:]\\s*)що (краще|обрати|вибрати)[,:]? .{0,60}( чи | або )|порівняй (\\w+ ){0,2}(варіант|опці|альтернатив)|help me (decide|choose|pick)|which (one )?should (i|we) (pick|choose|go with|buy)|weigh (the |these |my )?options|pros (and|&) cons|плюси (і|та|й) мінуси|decision matrix|матриц\\w* (рішен|вибору)|зваж (\\w+ )?варіант"
+  ]
+ },
+ {
+  "id": "translate",
+  "skills": [
+   "translate"
+  ],
+  "triggers": [
+   "\\btranslat(e|ing)\\b|\\btranslation (of|into|to)\\b|improve (this|the) translation|переклад(и|іть|ати|ай|аєш)? (\\w+ ){0,3}(на |англ|укр|мов|текст|лист|документ|інструкц|сторінк|статт)|зроби переклад|покращ\\w* (\\w+ ){0,3}переклад|як (це )?буде (англійською|українською|німецькою|польською|іспанською|французькою)|^переклади\\b"
+  ]
+ }
+]

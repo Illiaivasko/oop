@@ -1,0 +1,8 @@
+.work/
+.venv/
+__pycache__/
+.DS_Store
+
+# Agent workspaces & kit backups
+.agentkit/backups/
+.agentkit/pre_upgrade_backups/
